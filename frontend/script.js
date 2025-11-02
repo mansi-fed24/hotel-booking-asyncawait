@@ -1,4 +1,8 @@
 
+const API_BASE =
+  window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://localhost:3000"
+    : "https://hotel-booking-asyncawait-project.onrender.com";
 
 // Handle booking form submission
 document.getElementById("bookingForm").addEventListener("submit", async (e) => {
@@ -31,7 +35,7 @@ document.getElementById("bookingForm").addEventListener("submit", async (e) => {
 
   if (checkIn < today) {
     message.textContent = "Check-in date cannot be in the past.";
-   message.style.color = "red";
+    message.style.color = "red";
     return;
   }
 
@@ -43,7 +47,7 @@ document.getElementById("bookingForm").addEventListener("submit", async (e) => {
 
   // send data to backend
   try {
-    const res = await fetch("http://localhost:3000/api/bookings", {
+    const res = await fetch(`${API_BASE}/api/bookings`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(booking),

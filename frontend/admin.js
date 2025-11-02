@@ -1,6 +1,12 @@
+ const API_BASE =
+  window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://localhost:3000"
+    : "https://hotel-booking-asyncawait-project.onrender.com";
+    
+ 
  async function getBookings() {
       try {
-        const res = await fetch("http://localhost:3000/api/bookings");
+        const res = await fetch(`${API_BASE}/api/bookings`);
         const data = await res.json();
         bookingsData = data; 
 
@@ -42,7 +48,7 @@
       if (!confirmDelete) return;
 
       try {
-        const res = await fetch(`http://localhost:3000/api/bookings/${id}`, {
+        const res = await fetch(`${API_BASE}/api/bookings/${id}`, {
           method: "DELETE",
         });
         if (res.ok) {
@@ -94,7 +100,7 @@
         };
 
         try {
-            const res = await fetch(`http://localhost:3000/api/bookings/${id}`, {
+            const res = await fetch(`${API_BASE}/api/bookings/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updated)

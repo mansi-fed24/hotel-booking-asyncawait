@@ -69,7 +69,10 @@
         <div class="hero-text position-absolute top-50 start-50 translate-middle text-center text-white">
             <h1 class="display-4 fw-bold">Welcome to <span class="h-font">Hotel Async Await ⏳</span></h1>
             <p class="lead">Where every stay awaits… asynchronously 😄</p>
-            <a href="#book" class="btn btn-warning btn-lg mt-3">Book Your Stay</a>
+            <a href="#" class="btn btn-warning btn-lg mt-3"  
+                data-bs-toggle="modal"
+                data-bs-target="#bookingModal">
+                    Book Your Stay</a>
         </div>
     </section>
 
@@ -341,14 +344,7 @@
             
         });
     </script>
-     <script>
-    // Load header.html into #header div
-    fetch('inc/header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header').innerHTML = data;
-      });
-  </script>
+    
   
   <script src="script.js"></script>
 </body>
