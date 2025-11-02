@@ -5,7 +5,19 @@ import bookingRoutes from "./bookingRoutes.js";
 
 
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5500",  // local HTML testing
+      "http://127.0.0.1:5500",
+      "https://hotel-booking-asyncawait-project.vercel.app"  // your live frontend
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(express.json());
 
 app.get("/", async (req, res) => {
